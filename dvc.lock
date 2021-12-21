@@ -8,8 +8,8 @@ stages:
       size: 16297357
       nfiles: 502
     - path: src/train.py
-      md5: ed2bcacdf0e8dfb6ea6ee95294cc44fa
-      size: 2818
+      md5: aba88c5bc0ef505cd83888efc3e6b3d1
+      size: 2519
     outs:
     - path: model/cats_dogs_classifier_try2.h5
       md5: 377cd605230150f128d3381e3ecc0348
