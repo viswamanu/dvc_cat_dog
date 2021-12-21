@@ -1,0 +1,8 @@
+stages:
+  train:
+    cmd: python src/train.py
+    deps:
+    - data/raw/train
+    - src/train.py
+    outs:
+    - model/cats_dogs_classifier_try2.h5
