@@ -1,0 +1,4 @@
+outs:
+- md5: 559b6342b51cfa11dcc147756b9c92bc
+  size: 47921480
+  path: cats_dogs_classifier.h5
