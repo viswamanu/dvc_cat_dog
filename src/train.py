@@ -77,7 +77,7 @@ def main(repo_path):
     #dump(trained_model, repo_path / "model/model.joblib")
 
 
-    model.save_weights(repo_path / "model/cats_dogs_classifier.h5")
+    model.save_weights(repo_path / "model/cats_dogs_classifier_try2.h5")
 
 
 

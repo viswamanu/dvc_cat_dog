@@ -16,7 +16,7 @@ import tensorflow as tf
 
 
 def main(repo_path):
-    weight_path = repo_path / "model/cats_dogs_classifier.h5"
+    weight_path = repo_path / "model/cats_dogs_classifier_try2.h5"
     model_path = repo_path / "model/cat_dog_simple_model.json"
     data_path = repo_path / "data"
     test_path = data_path / "raw/val"
