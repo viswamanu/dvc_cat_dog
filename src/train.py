@@ -35,24 +35,16 @@ def main(repo_path):
     test_generator = test_datagen.flow_from_directory(test_path, target_size=(img_width, img_height), batch_size=1,
                                                       shuffle=True)
 
-    model = Sequential()
-    model.add(Conv2D(32, (3, 3), padding='same', input_shape=(img_width, img_height, 3)))
-    model.add(Activation('relu'))
-    model.add(Conv2D(32, (3, 3)))
-    model.add(Activation('relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.5))
-    model.add(Conv2D(64, (3, 3)))
-    model.add(Activation('relu'))
+    model = VGG16(input_shape=(224, 224, 3), weights='imagenet', include_top=False)
 
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.5))
-    model.add(Flatten())
-    model.add(Dense(64))
-    model.add(Activation('relu'))
-    model.add(Dropout(0.5))
-    model.add(Dense(num_classes))
-    model.add(Activation('softmax'))
+    x = model.output
+    x = GlobalAveragePooling2D()(x)
+
+    x = Dense(256, activation='relu')(x)
+    x = Dense(128, activation='relu')(x)
+
+    preds = Dense(2, activation='softmax')(x)
+    model = Model(inputs=model.input, outputs=preds)
 
 
     def save_model(model):
@@ -77,7 +69,7 @@ def main(repo_path):
     #dump(trained_model, repo_path / "model/model.joblib")
 
 
-    model.save_weights(repo_path / "model/cats_dogs_classifier_try2.h5")
+    model.save_weights(repo_path / "model/cats_dogs_classifier_vgg16.h5")
 
 
 
